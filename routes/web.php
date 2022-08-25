@@ -1,0 +1,33 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\CartsController;
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', [ProductsController::class,'index']);
+
+Route::get('/test', function () {
+    dd(213);
+});
+
+
+Auth::routes();
+
+//cart
+Route::get('/getCart', [CartsController::class, 'getCart'])->name('getCart');
+Route::post('/cart', [CartsController::class, 'store'])->name('cart');
+Route::get('/checkout', [CartsController::class, 'checkout'])->name('checkout');
+Route::get('/checkout/get/items', [CartsController::class, 'getCartItemsForCheckout']);
