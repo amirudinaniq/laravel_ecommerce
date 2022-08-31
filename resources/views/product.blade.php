@@ -8,7 +8,7 @@
    
     <!--====== SLIDER PART START ======-->
     
-    <section id="home" class="slider-area pt-100">
+    <section id="home" class="slider-area">
         <div class="container-fluid position-relative">
             <div class="slider-active">
                 <div class="single-slider">
@@ -172,8 +172,9 @@
                                                         <li><i class="lni-star-filled"></i></li>
                                                     </ul>
                                                     <span class="regular-price">{{$product->sale_price}}</span>
-                                                    <span class="discount-price">{{$product->price}}</span>
+                                                    <span class="discount-price 2">{{$product->price}}</span>
                                                     <add-to-cart-button product-id="{{$product->id}}" user-id="{{auth()->user()->id ?? 0}}" />
+                                                 
                                                 </div>
                                             </div> <!-- single product items -->
                                         </div>

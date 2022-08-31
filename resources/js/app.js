@@ -13,7 +13,14 @@ import Toaster from '@meforma/vue-toaster';
 import shared from "./sharedmethod.js";
 window.shared = shared;
 import moment from 'moment';
+import Popper from "vue3-popper";
 
+// import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+// import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+// import "bootstrap/dist/css/bootstrap.min.css"
+// import "bootstrap"
 
 
 const emitter = mitt();
@@ -33,19 +40,27 @@ app.use(Toaster, {
     // One of the options
     position: 'top'
   })
-  app.use(VueAxios, axios)
-
+app.use(VueAxios, axios)
 
   //import components
 import ExampleComponent from './components/ExampleComponent.vue';
 import AddToCart from './components/AddToCart.vue';
+import Testing from './components/testing.vue';
+import headercomp from './common/Header.vue';
 import Cart from './components/Cart.vue';
 import checkout from './components/checkout.vue';
 
 app.component('add-to-cart-button', AddToCart);
+app.component('testing', Testing);
+app.component('headercomp', headercomp);
 app.component('cart', Cart);
 app.component('checkout', checkout);
 
+app.component("Popper", Popper);
+// Make BootstrapVue available throughout your project
+// app.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+// app.use(IconsPlugin)
 
 /**
  * The following block of code may be used to automatically register your

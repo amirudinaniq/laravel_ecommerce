@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Cart extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     public $table = 'carts';
 
@@ -17,6 +19,7 @@ class Cart extends Model
       'quantity',
       'price',
       'user_id',
+      'deleted_at',
       'created_at',
       'updated_at',
     ];

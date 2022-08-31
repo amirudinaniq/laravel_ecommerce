@@ -1,9 +1,14 @@
 import _ from 'lodash';
+import { useLoading } from 'vue3-loading-overlay';
+import 'vue3-loading-overlay/dist/vue3-loading-overlay.css';
+
+var loader = useLoading();
 
 export default{
     data:function(){
         return{
             intervalTime : 0,
+
         }
     },
     capitalize:function(str){
@@ -55,8 +60,8 @@ export default{
     //     })
     // },
     postData:function(dest,item){
-        window.messageError = '';
-        window.messageSuccess = '';
+        // window.messageError = '';
+        // window.messageSuccess = '';
         dest = dest.replaceAll(/(?<=\?.*)\?/g,'&')
         return this.axios.post(dest,item).then(resp=>{
             try {
@@ -74,7 +79,7 @@ export default{
                 }
 
                 resp.error = errorMsg;
-                window.messageError = errorMsg;
+                // window.messageError = errorMsg;
                 return ["error", resp];
             }
             let successCallback = (data) => {
@@ -82,7 +87,7 @@ export default{
                 if(data.success) successMsg += data.success+' ';
                 if(data.message) successMsg += data.message+' ';
                 resp.success = successMsg;
-                window.messageSuccess = successMsg;
+                // window.messageSuccess = successMsg;
             }
 
             if(resp.data.statusRes){
@@ -97,8 +102,8 @@ export default{
                     return errorCallback(resp.data);
                 }
             }
-            window.sessionList = isset(()=>resp.data.session) ? resp.data.session : window.sessionList;
-            window.updateNotification()
+            // window.sessionList = isset(()=>resp.data.session) ? resp.data.session : window.sessionList;
+            // window.updateNotification()
             return ["success",resp];
             //return "success";
         }).catch(err=>{
@@ -384,4 +389,23 @@ export default{
             toaster: position
         })
     },
+
+    showLoader:function(){
+        loader.show({
+            // Optional parameters
+            loader : 'dots',
+            color: '#fe7865',
+            isFullPage : true,
+            zIndex : 9999   
+        });
+        // simulate AJAX
+        // setTimeout(() => {
+        //  loader.hide()
+        // },5000)  
+    },
+
+    hideLoader:function(){
+        loader.hide()
+    },
+
 }

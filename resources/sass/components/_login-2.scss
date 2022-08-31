@@ -1,0 +1,144 @@
+.login-2{
+    .card {
+        width: 100%;
+        padding: 30px;
+    }
+    .form {
+        padding: 20px;
+    }
+    .form-control {
+        height: 50px;
+        background-color: #eee;
+    }
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #f50057;
+        outline: 0;
+        box-shadow: none;
+        background-color: #eee;
+    }
+    .inputbox {
+        margin-bottom: 15px;
+    }
+    .first-btn {
+        width: 100%;
+        height: 40px;
+        background-color: #f50057;
+        border-color: #f50057;
+    }
+    .first-btn:hover {
+        background-color: darken(#f50057,10%);
+        border-color: #f50057;
+    }
+    .second-btn {
+        color: #f50057;
+        text-decoration: none;
+    }
+    .second-btn:hover {
+        color: darken(#f50057,10%);
+    }
+    .form-check-input:checked {
+        background-color: #f50057;
+        border-color: #f50057;
+    }
+
+    .sign-up-options{
+        .top{
+            display: flex;
+            padding:0.8rem 0;
+            align-items: center;
+        }
+
+        .bottom{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 -0.3125rem;
+        }
+
+        .divider{
+            height: 1px;
+            width: 100%;
+            background-color: #dbdbdb;
+            flex: 1;
+        }
+
+        .or{
+            color: #ccc;
+            padding: 0 1rem;
+            text-transform: uppercase;
+            font-size: .75rem;
+        }
+
+        .btn-sign-up{
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            box-sizing: border-box;
+            outline: none;
+            border: 1px solid rgba(0,0,0,.26);
+            background-color: #fff;
+            color: rgba(0,0,0,.87);
+            padding: 0 2px;
+            border-radius: 2px;
+            width: 100%;
+            height: 40px;
+            font-size: .875rem;
+            box-sizing: border-box;
+            outline: none;
+            border: 1px solid rgba(0,0,0,.26);
+            background-color: #fff;
+            color: rgba(0,0,0,.87);
+            padding: 0 2px;
+            border-radius: 2px;
+            width: 100%;
+            height: 40px;
+            font-size: .875rem;
+            padding-right: 8px;
+            flex: 1;
+            margin: 0.3125rem;
+            cursor: pointer;
+            transition: 0.3s;
+
+            &:hover{
+                background-color: darken(#fff,10%);
+            }
+
+            .logo{
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                flex-shrink: 0;
+                width: 36px;
+                height: 36px;
+                border-radius: 1px;
+
+                img{
+                    max-width: 22px;
+                    max-height: 22px;
+                    border-radius: 50%;
+                }
+
+                .icon{
+                    // border-radius: 50%;
+                    // flex-shrink: 0;
+                    // width: 22px;
+                    // height: 22px;
+                    // background-image:url(https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/7b95007f3377150730bbb5d1ddb477d6.png);
+                    // background-size: 325% 287.5%;
+                    // background-position: 5.555555555555555% 62.666666666666664%;
+                
+                    // border-radius: 50%;
+                    // flex-shrink: 0;
+                    // width: 22px;
+                    // height: 22px;
+                    // background-size: 117% 96.5%;
+                    // background-position: 154.555556% -7.333333%;
+                
+                }
+            }
+        }
+        
+    }
+}

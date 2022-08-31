@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Processing;
+
+use Stripe;
 
 
 class CartsController extends Controller
@@ -144,7 +147,6 @@ class CartsController extends Controller
                             $data[$item->product_id]['quantity'] = $item->quantity;
                             $data[$item->product_id]['total_price'] = $item->price * $item->quantity;
                             $grand_total += $item->price * $item->quantity;
-                            $data['grand_total'] = $grand_total;
 
                         }
 
@@ -156,7 +158,128 @@ class CartsController extends Controller
 
         $result = array();
         $result['cartItems'] = $data;
+        $result['grand_total'] = $grand_total;
+
         return $result;     
+    }
+
+    public function processPayment(Request $request)
+    {
+        // dd($request->all());
+        $result = [];
+        $firstName = $request->firstName;
+        $lastName = $request->lastName;
+        $country = $request->country;
+        $address = $request->address;
+        $city = $request->city;
+        $state = $request->state;
+        $zipcode = $request->zipcode;
+        $phoneNumber = $request->phoneNumber;
+        $email = $request->email;
+        $card_type = $request->card_type;
+        $card_number = $request->card_number;
+        $card_cvv = $request->card_cvv;
+        $expiration_month = $request->expiration_month;
+        $expiration_year = $request->expiration_year;
+        $amount = $request->amount;
+        $orders = $request->order;
+        $ordersArray = [];
+        $customer_id = auth()->user()->id;
+
+        //Getting Order Details
+
+        foreach ($orders as $key => $order) {
+            if($order['id']){
+                $ordersArray[$order['id']]['order_id'] = $order['id'];
+                $ordersArray[$order['id']]['quantity'] = $order['quantity'];
+            }
+        }
+
+        $stripe = Stripe::make(env('STRIPE_API_KEY'));
+
+        $token = $stripe->tokens()->create([
+           'card' => [
+            'number' => $card_number,
+            'exp_month' => $expiration_month,
+            'exp_year' => $expiration_year,
+            'cvc' => $card_cvv,
+           ]
+        ]);
+
+        if(!$token['id']){
+            session()->flush('error','Stripe Token generation failed');
+            return;
+        }
+
+        //Create a customer stripe
+
+        $customer = $stripe->customers()->create([
+            'name' => $firstName.' '.$lastName,
+            'email' => $email,
+            'phone' => $phoneNumber,
+            'address' => [
+                'line1' => $address,
+                'postal_code' => $zipcode,
+                'city' => $city,
+                'state' => $state,
+                'country' => $country,
+            ],
+            'shipping' => [
+                'name' =>  $firstName.' '.$lastName,
+                'address' => [
+                    'line1' => $address,
+                    'postal_code' => $zipcode,
+                    'city' => $city,
+                    'state' => $state,
+                    'country' => $country,
+                ],
+            ],
+            'source' => $token['id'],
+        ]);
+
+     
+        //code for charging the client in Stripe
+        $charge = $stripe->charges()->create([
+            'customer' => $customer['id'],
+            'currency' => 'MYR',
+            'amount' => $amount,
+            'description' => 'Payment for order',
+        ]);
+
+        if($charge['status'] == 'succeeded'){
+            //Capture the details from stripe
+
+            $customerIdStripe = $charge['id'];
+            $amountRec = $charge['amount'];
+            
+            $processingDetails = Processing::create([
+                'client_id' => $customer_id,
+                'client_name' => $firstName.' '.$lastName,
+                'client_address' => json_encode([
+                    'line1' => $address,
+                    'postal_code' => $zipcode,
+                    'city' => $city,
+                    'state' => $state,
+                    'country' => $country,
+                ]),
+                'order_details' => json_encode($ordersArray),
+                'amount' => $amount,
+                'currency' => $charge['currency'],
+            ]);
+
+            if($processingDetails)
+            {
+                //empty the cart
+                Cart::where('user_id',$customer_id)->delete();
+
+                $result['message'] = "Order completed successfully";
+            }
+
+        }else{
+            $result['message'] = "Order failed contact support";
+        }
+
+        return $result;
 
     }
 }

@@ -26,6 +26,9 @@ import axios from 'axios';
                 };
                 let response = await axios.post('/cart',params);
 
+                if(response.data.message == 'Cart Updated'){
+                    this.$toast.success('Added to your cart');
+                }
                 console.log('res',response);
 
                  this.emitter.emit("changeInCart", response.data.items);

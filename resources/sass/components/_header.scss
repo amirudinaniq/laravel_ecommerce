@@ -1,0 +1,61 @@
+
+.mini-navbar{
+    display: flex;
+    gap: 1.5rem;
+    justify-content: right;
+    font-size: .8125rem;
+
+    li{
+        color:#777;
+        cursor:pointer;
+        &:hover{
+            color: darken(#777,40%)
+        }
+
+        .user-avatar{
+            width: 1.375rem;
+            height: 1.375rem;
+            border-radius: 50%;
+            margin-top: -3px;
+        }
+
+    }
+
+       .btn-avatar{    
+        background: none;
+        border:none;
+        color:#777;
+        display: flex;
+        gap: 5px;
+        cursor:pointer;
+        &:hover{
+            color: darken(#777,40%)
+        }
+    }
+
+    .user-options{
+        li{
+            padding:0.4rem;
+            &:hover{
+                background: darken(#ffffff,10%);
+            }
+        }
+    }
+
+    // .popper:hover > #arrow{
+    //     background-color: #fff;
+    //     &::before{
+    //         // background: darken(#ffffff,10%);
+    //         // transition: revert;
+    //     }
+    // }
+
+    .popper{
+        top:0px !important;
+        min-width: 10rem !important;
+        background: #ffffff !important;
+    }
+
+     
+    
+}

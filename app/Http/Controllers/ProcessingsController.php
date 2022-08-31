@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Product;
 
-class ProductsController extends Controller
+class ProcessingsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +13,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-
-        // dd(Auth::guard('web')->user());
-        $products = Product::all();
-        return view('product',compact('products'));
+        //
     }
 
     /**
