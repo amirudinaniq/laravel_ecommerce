@@ -23,9 +23,9 @@ use App\Http\Controllers\RegisterController;
 
 Route::get('/', [ProductsController::class,'index'])->name('home');
 
-Route::get('/test', function () {
-    dd('testing');
-})->middleware(['auth', 'password.confirm']);
+// Route::get('/test', function () {
+//     dd('testing');
+// })->middleware(['auth', 'password.confirm']);
 
 
 //authentication
