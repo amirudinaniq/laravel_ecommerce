@@ -10,7 +10,6 @@
     @yield('styles')
 
 
-    @vite(['resources/sass/app.scss'])
     
     <!-- <script src="{{asset('css/app.css')}}" defer></script> -->
     <!--====== Favicon Icon ======-->
@@ -39,4 +38,7 @@
     
     <!--====== Responsive css ======-->
     <link rel="stylesheet" href="assets/css/responsive.css">
+
+    @vite(['resources/sass/app.scss'])
+
   

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Cart;
+use App\Models\Orders;
 
 
 class OrdersController extends Controller
@@ -16,10 +17,15 @@ class OrdersController extends Controller
 
     public function getOrders(Request $request){
         $user = auth()->user();
-        $userItems = Cart::where('user_id',$user->id)->sum('quantity');
+        $orders = Orders::with(array())->where('client_id',$user->id)->get();
+
+        foreach($orders as $order){
+            $order->order_details = json_decode($order->order_details);
+            $order->client_address = json_decode($order->client_address);
+        }
 
         return [
-            'items'=>$userItems,
+            'orders'=>$orders,
         ];
     }
 }

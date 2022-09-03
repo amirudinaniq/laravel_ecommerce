@@ -1,0 +1,42 @@
+.orders{
+    .order{
+        margin-bottom: 20px;
+         border-bottom:1px solid $border-color;
+    }
+    .order-inner{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        padding:1rem 0;
+        cursor: pointer;
+        &:nth-child(1){
+            padding-top:0.4rem;
+        }
+
+        .product-img{
+            width: 150px;
+        }
+
+        .order-details{
+            margin-top:-64px;
+
+        }
+    }
+
+    .order-total{
+        font-size:23px;
+        color:$primary-color;
+    }
+
+    .order-status{
+        font-size:22px;
+        // color:$primary-color;
+    }
+}
+
+@media(max-width:767px){
+    .order{
+        font-size: 10px;
+    }
+}

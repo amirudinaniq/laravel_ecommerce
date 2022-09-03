@@ -9,6 +9,10 @@ use App\Http\Controllers\CartsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\PointsController;
+use App\Http\Controllers\NotificationsController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\CustomersController;
 
 
 /*
@@ -51,5 +55,18 @@ Route::group(['middleware' => ['auth']], function() {
     //orders
     Route::get('/orders', [OrdersController::class, 'orders'])->name('orders');
     Route::get('/getOrders', [OrdersController::class, 'getOrders'])->name('getOrders');
- });
+ 
+    //notifications
+    Route::get('/notifications', [NotificationsController::class, 'notifications'])->name('notifications');
+
+    //points
+    Route::get('/points', [PointsController::class, 'points'])->name('points');
+
+    //settings
+    Route::get('/settings', [SettingsController::class, 'settings'])->name('settings');
+
+     //customers
+     Route::get('/account', [CustomersController::class, 'customerAccount'])->name('account');
+
+});
 

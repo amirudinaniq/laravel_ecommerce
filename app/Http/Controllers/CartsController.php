@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Product;
 use App\Models\Cart;
-use App\Models\Processing;
+use App\Models\Orders;
 
 use Stripe;
 
@@ -190,8 +190,11 @@ class CartsController extends Controller
 
         foreach ($orders as $key => $order) {
             if($order['id']){
-                $ordersArray[$order['id']]['order_id'] = $order['id'];
+                $ordersArray[$order['id']]['product_id'] = $order['id'];
+                $ordersArray[$order['id']]['product_name'] = $order['name'];
+                $ordersArray[$order['id']]['product_price'] = $order['price'];
                 $ordersArray[$order['id']]['quantity'] = $order['quantity'];
+                $ordersArray[$order['id']]['total_price'] = $order['total_price'];
             }
         }
 
@@ -252,7 +255,7 @@ class CartsController extends Controller
             $customerIdStripe = $charge['id'];
             $amountRec = $charge['amount'];
             
-            $processingDetails = Processing::create([
+            $orderDetails = Orders::create([
                 'client_id' => $customer_id,
                 'client_name' => $firstName.' '.$lastName,
                 'client_address' => json_encode([
@@ -267,7 +270,7 @@ class CartsController extends Controller
                 'currency' => $charge['currency'],
             ]);
 
-            if($processingDetails)
+            if($orderDetails)
             {
                 //empty the cart
                 Cart::where('user_id',$customer_id)->delete();

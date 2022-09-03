@@ -1,0 +1,7 @@
+
+-----3 september 2022-----
+CREATE TABLE orders LIKE processings;
+INSERT INTO orders SELECT * FROM processings;
+
+ALTER TABLE `laravel_shop`.`orders` 
+ADD COLUMN `product_id` INT(11) NULL DEFAULT NULL AFTER `client_address`;

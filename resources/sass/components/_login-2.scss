@@ -13,7 +13,7 @@
     .form-control:focus {
         color: #495057;
         background-color: #fff;
-        border-color: #f50057;
+        border-color: $primary-color;
         outline: 0;
         box-shadow: none;
         background-color: #eee;
@@ -24,23 +24,27 @@
     .first-btn {
         width: 100%;
         height: 40px;
-        background-color: #f50057;
-        border-color: #f50057;
+        background-color: $primary-color;
+        border-color: $primary-color;
+        color:#fff;
     }
     .first-btn:hover {
-        background-color: darken(#f50057,10%);
-        border-color: #f50057;
+        background-color: darken($primary-color,10%);
+        border-color: $primary-color;
+        color:#fff;
+        
     }
     .second-btn {
-        color: #f50057;
+        color: $primary-color;
         text-decoration: none;
+
     }
     .second-btn:hover {
-        color: darken(#f50057,10%);
+        color: darken($primary-color,10%);
     }
     .form-check-input:checked {
-        background-color: #f50057;
-        border-color: #f50057;
+        background-color: $primary-color;
+        border-color: $primary-color;
     }
 
     .sign-up-options{

@@ -9,9 +9,7 @@
                 padding:0.3rem;
                 cursor: pointer;
 
-                &.is-active{
-                    color:#fe7865;
-                }
+            
         
                 a{
                     color:inherit;
@@ -28,7 +26,7 @@
                 &:hover{
                     // background: darken(#fff,10%);
                     transition:0.3s;
-                    color:#fe7865;
+                    color:$primary-color;
                 }
             }
         }

@@ -142,7 +142,7 @@
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="w-100"> 
-                                            <button class="btn btn-success first-btn btn-block">Login</button> 
+                                            <button class="btn first-btn btn-block">Login </button> 
                                         </div> 
                                     </div>
                                     <a href="#">Forgot Password?</a>

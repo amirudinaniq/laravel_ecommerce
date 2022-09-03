@@ -22,7 +22,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faUserSecret,faGear,faCoins,faBell,faUser,faListAlt } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret,faGear,faCoins,faBell,faUser,faListAlt,faSearch } from '@fortawesome/free-solid-svg-icons'
 // import { faUser,faListAlt } from '@fortawesome/free-regular-svg-icons'
 
 /* add icons to the library */
@@ -32,7 +32,8 @@ library.add(
   faGear,
   faBell,
   faListAlt,
-  faCoins
+  faCoins,
+  faSearch
   )
 
 
@@ -70,6 +71,7 @@ import Testing from './components/testing.vue';
 import Cart from './components/Cart.vue';
 import checkout from './components/checkout.vue';
 import orders from './components/orders.vue';
+import account from './components/account.vue';
 
 //import common components
 import headercomp from './common/Header.vue';
@@ -81,6 +83,7 @@ app.component('testing', Testing);
 app.component('cart', Cart);
 app.component('checkout', checkout);
 app.component('orders', orders);
+app.component('account', account);
 
 app.component('headercomp', headercomp);
 app.component('sidemenu', SideMenu);

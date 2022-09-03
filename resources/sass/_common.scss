@@ -1,1 +1,11 @@
-// .w-40{width: 40% !important;}
+.is-active{
+    color:$primary-color;
+}
+
+.gap-1{
+    gap:10px;
+}
+
+.preloader .spin .cube1, .preloader .spin .cube2{
+    background-color: $primary-color;
+}

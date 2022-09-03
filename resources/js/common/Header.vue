@@ -15,7 +15,7 @@
                                 <template #content>
                                     <ul class="user-options">
                                         <li @click="action('account')">My Account</li>
-                                        <li @click="action('orders')">My Orders</li>
+                                        <li @click="action('orders')">My Purchaser</li>
                                         <li @click="action('settings')">Setting</li>
                                         <li @click="action('logout')">Logout</li>
                                     </ul>

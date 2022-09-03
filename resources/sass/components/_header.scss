@@ -6,10 +6,10 @@
     font-size: .8125rem;
 
     li{
-        color:#777;
+        color:$font-color;
         cursor:pointer;
         &:hover{
-            color: darken(#777,40%)
+            color: darken($font-color,40%)
         }
 
         .user-avatar{
@@ -24,12 +24,12 @@
        .btn-avatar{    
         background: none;
         border:none;
-        color:#777;
+        color:$font-color;
         display: flex;
         gap: 5px;
         cursor:pointer;
         &:hover{
-            color: darken(#777,40%)
+            color: darken($font-color,40%)
         }
     }
 

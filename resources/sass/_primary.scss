@@ -1,0 +1,6 @@
+.bg-primary2{
+    background-color: $primary-color !important;
+    &:hover{
+        background-color: darken($primary-color,8%) !important;
+    }
+}

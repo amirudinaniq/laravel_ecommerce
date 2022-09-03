@@ -42,7 +42,7 @@
                             url : "account",
                         },
                         {
-                            label : "My Orders",
+                            label : "My Purchaser",
                             icon : "list-alt",
                             url : "orders",
                         },
