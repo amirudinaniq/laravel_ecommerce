@@ -7,4 +7,11 @@ if (!function_exists('callName')) {
     }
 }
 
+if (!function_exists('test')) {
+    function test()
+    {
+    
+        return 'testing only';
+    }
+}
 ?>

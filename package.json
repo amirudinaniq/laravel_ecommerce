@@ -19,6 +19,11 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.2.0",
+        "@fortawesome/free-brands-svg-icons": "^6.2.0",
+        "@fortawesome/free-regular-svg-icons": "^6.2.0",
+        "@fortawesome/free-solid-svg-icons": "^6.2.0",
+        "@fortawesome/vue-fontawesome": "^3.0.1",
         "@meforma/vue-toaster": "^1.3.0",
         "bootstrap-vue": "^2.22.0",
         "mitt": "^3.0.0",
@@ -27,6 +32,7 @@
         "vue-axios": "^3.4.1",
         "vue-loader": "^15.9.7",
         "vue-moment": "^4.1.0",
+        "vue-router": "^4.1.5",
         "vue-toastr": "^2.1.2",
         "vue3-loading-overlay": "^0.0.0",
         "vue3-popper": "^1.5.0"

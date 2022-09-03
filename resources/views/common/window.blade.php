@@ -1,8 +1,12 @@
 <script>
-    window.test = '123';
+
+    //route
     window.routeHasLogin = "{{Route::has('login')}}";
     window.routeHasRegister = "{{Route::has('register')}}";
+    window.currentRoute = '{{Route::current()->getName();}}';
 
+
+    //authentication
     @auth
         window.isUserLogin = "true";
     @else
@@ -13,6 +17,7 @@
     window.user = @json(auth()->user());
 
     window.addEventListener('load', (event) => {
-        console.log('page is fully loaded',window.user);
+        // console.log('page is fully loaded',window.user);
     });
+
 </script>

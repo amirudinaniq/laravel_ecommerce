@@ -15,6 +15,27 @@ window.shared = shared;
 import moment from 'moment';
 import Popper from "vue3-popper";
 
+/* import the fontawesome core */
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+/* import specific icons */
+import { faUserSecret,faGear,faCoins,faBell,faUser,faListAlt } from '@fortawesome/free-solid-svg-icons'
+// import { faUser,faListAlt } from '@fortawesome/free-regular-svg-icons'
+
+/* add icons to the library */
+library.add(
+  faUser,
+  faUserSecret,
+  faGear,
+  faBell,
+  faListAlt,
+  faCoins
+  )
+
+
 // import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 // import 'bootstrap/dist/css/bootstrap.css'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -46,17 +67,29 @@ app.use(VueAxios, axios)
 import ExampleComponent from './components/ExampleComponent.vue';
 import AddToCart from './components/AddToCart.vue';
 import Testing from './components/testing.vue';
-import headercomp from './common/Header.vue';
 import Cart from './components/Cart.vue';
 import checkout from './components/checkout.vue';
+import orders from './components/orders.vue';
+
+//import common components
+import headercomp from './common/Header.vue';
+import SideMenu from './common/SideMenu.vue';
+
 
 app.component('add-to-cart-button', AddToCart);
 app.component('testing', Testing);
-app.component('headercomp', headercomp);
 app.component('cart', Cart);
 app.component('checkout', checkout);
+app.component('orders', orders);
+
+app.component('headercomp', headercomp);
+app.component('sidemenu', SideMenu);
+
 
 app.component("Popper", Popper);
+app.component('font-awesome-icon', FontAwesomeIcon);
+
+
 // Make BootstrapVue available throughout your project
 // app.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin

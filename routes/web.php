@@ -8,6 +8,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\OrdersController;
 
 
 /*
@@ -46,5 +47,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/checkout', [CartsController::class, 'checkout'])->name('checkout');
     Route::get('/checkout/get/items', [CartsController::class, 'getCartItemsForCheckout']);
     Route::post('/process/user/payment', [CartsController::class, 'processPayment'])->name('processPayment');
+
+    //orders
+    Route::get('/orders', [OrdersController::class, 'orders'])->name('orders');
+    Route::get('/getOrders', [OrdersController::class, 'getOrders'])->name('getOrders');
  });
 

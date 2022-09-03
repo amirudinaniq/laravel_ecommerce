@@ -1,0 +1,39 @@
+.side-menu{
+   .card{
+
+    .card-body{
+        padding:0.7rem;
+
+        ul.side-menu-inner{
+            li{
+                padding:0.3rem;
+                cursor: pointer;
+
+                &.is-active{
+                    color:#fe7865;
+                }
+        
+                a{
+                    color:inherit;
+                    span{
+                        display:inline-block;
+                        margin-left:10px;
+                    }
+    
+                    svg{
+                        min-width: 18px;
+                    }
+                }
+
+                &:hover{
+                    // background: darken(#fff,10%);
+                    transition:0.3s;
+                    color:#fe7865;
+                }
+            }
+        }
+
+    }
+      
+   }
+}

@@ -14,12 +14,10 @@
                                 </button>
                                 <template #content>
                                     <ul class="user-options">
-                                        <li>My Account</li>
-                                        <li>My Purchase</li>
-                                        <li>Setting</li>
-                                        <li @click="action('logout')">
-                                            Logout
-                                        </li>
+                                        <li @click="action('account')">My Account</li>
+                                        <li @click="action('orders')">My Orders</li>
+                                        <li @click="action('settings')">Setting</li>
+                                        <li @click="action('logout')">Logout</li>
                                     </ul>
                                 </template>
                             </Popper>
@@ -102,14 +100,14 @@
         },
         mounted() {
             console.log('isUserLogin',window.isUserLogin);
-
         },
         methods : {
             action(location){
+
                 if(location == 'home'){
                     window.location.href = "/"
-                }else if(location == 'logout'){
-                    window.location.href = "/logout"
+                }else{
+                    window.location.href = "/" + location
                 }
             },
         }
