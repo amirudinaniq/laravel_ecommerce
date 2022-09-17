@@ -75,6 +75,7 @@ import account from './components/account.vue';
 
 //import common components
 import headercomp from './common/Header.vue';
+import footercomp from './common/Footer.vue';
 import SideMenu from './common/SideMenu.vue';
 
 
@@ -86,6 +87,7 @@ app.component('orders', orders);
 app.component('account', account);
 
 app.component('headercomp', headercomp);
+app.component('footercomp', footercomp);
 app.component('sidemenu', SideMenu);
 
 

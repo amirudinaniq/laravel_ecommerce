@@ -37,35 +37,18 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul id="nav" class="navbar-nav ml-auto">
-                                <li class="nav-item active">
-                                    <a data-scroll-nav="0"  @click="action('home')" href="javascript:void(0);">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#product">Products</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#service">Services</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#showcase">Portfolio</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#team">Team</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#blog">Blog</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#contact">Contact</a>
+                                
+                                <li class="nav-item" v-for="(menu,index) in navMenu" :key="index" :class="{ 'active' : route==menu.route}">
+                                    <a data-scroll-nav="0"  @click="action(menu.route)" href="javascript:void(0);">{{menu.label}}</a>
                                 </li>
                                 
                                 <template v-if="routeHasLogin == '1'">
                                     <cart v-if="isUserLogin == 'true'"></cart>
                                     <template v-else>
-                                        <li class="nav-item">  
+                                        <li class="nav-item" :class="{ 'active' : route=='login'}">  
                                             <a href="/login" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
                                         </li>
-                                        <li class="nav-item" v-if="routeHasRegister == '1'">  
+                                        <li class="nav-item" v-if="routeHasRegister == '1'" :class="{ 'active' : route=='register'}">  
                                             <a href="/register" class="text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
                                         </li>  
                                     </template>
@@ -96,14 +79,39 @@
                 routeHasRegister : window.routeHasRegister,
                 isUserLogin : window.isUserLogin,
                 user : window.user,
+                isActive : '',
+                route : window.currentRoute,
+                navMenu : [
+                    {
+                        label : 'Home',
+                        route : 'home'
+                    },
+                    {
+                        label : 'Products',
+                        route : 'products'
+                    },
+                    {
+                        label : 'Team',
+                        route : 'team'
+                    },
+                    {
+                        label : 'Blog',
+                        route : 'blog'
+                    },
+                    {
+                        label : 'Contact',
+                        route : 'contact'
+                    },
+                ]
             }
         },
         mounted() {
             console.log('isUserLogin',window.isUserLogin);
+            console.log('currentRoute',window.currentRoute);
+        
         },
         methods : {
             action(location){
-
                 if(location == 'home'){
                     window.location.href = "/"
                 }else{

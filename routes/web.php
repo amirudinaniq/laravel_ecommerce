@@ -13,6 +13,7 @@ use App\Http\Controllers\PointsController;
 use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\AboutController;
 
 
 /*
@@ -28,9 +29,10 @@ use App\Http\Controllers\CustomersController;
 
 Route::get('/', [ProductsController::class,'index'])->name('home');
 
-// Route::get('/test', function () {
-//     dd('testing');
-// })->middleware(['auth', 'password.confirm']);
+//about
+Route::get('/contact', [AboutController::class,'contact'])->name('contact');
+Route::get('/team', [AboutController::class,'team'])->name('team');
+Route::get('/blog', [AboutController::class,'blog'])->name('blog');
 
 
 //authentication
@@ -67,6 +69,9 @@ Route::group(['middleware' => ['auth']], function() {
 
      //customers
      Route::get('/account', [CustomersController::class, 'customerAccount'])->name('account');
+
+ 
+
 
 });
 

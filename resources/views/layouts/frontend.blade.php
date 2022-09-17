@@ -27,6 +27,8 @@
         <!--====== HEADER PART ENDS ======-->
 
         @yield('content')
+
+        <footercomp></footercomp>
     </div>
     
 
