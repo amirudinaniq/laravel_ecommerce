@@ -5,6 +5,7 @@
     window.routeHasRegister = "{{Route::has('register')}}";
     window.currentRoute = '{{Route::current()->getName();}}';
 
+    window._asset = '{{ asset('') }}';
 
     //authentication
     @auth

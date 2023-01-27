@@ -19,9 +19,9 @@
                    <div class="orders">
                 
                     <div class="order" v-for="(order,index) in orders" :key="index">
-                        <div class="order-inner"  v-for="(item,i) in order.order_details" :key="i">
+                        <div class="order-inner"  v-for="(item,i) in order.orders_products" :key="i">
                             <div class="d-flex flex-row align-items-center">
-                                <div><img class="product-img" src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"  alt="" id="image"></div>
+                                <div><img class="product-img" :src="item.product_image ? asset(item.product_image) : defaultImage"  alt="" id="image"></div>
                                 <div class="order-details d-flex flex-column pl-md-3 pl-1">
                                     <div><h6>{{item.product_name}}</h6></div>
                                     <div>Quantity:<span class="pl-3">x{{item.quantity}}</span></div>
@@ -78,6 +78,7 @@ import axios from 'axios';
         data(){
             return {
                 getData:window.shared.getData,
+                asset:window.shared.asset,
                 status_options:[
                     {
                         label : "All",
@@ -106,6 +107,7 @@ import axios from 'axios';
                 ],
                 status : "all",
                 orders : [],
+                defaultImage : 'https://www.escapeauthority.com/wp-content/uploads/2116/11/No-image-found.jpg',
             }
 
         },
@@ -114,6 +116,7 @@ import axios from 'axios';
             
         },
         created(){
+        
             this.getOrders();
         },
         methods : {

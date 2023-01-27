@@ -324,6 +324,7 @@ export default{
         return items
     },
     asset(path) {
+        // console.log(window._asset)
         var base_path = window._asset || '';
         return base_path + path;
     },

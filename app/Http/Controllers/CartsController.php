@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Orders;
-
+use App\Models\OrdersProducts;
 use Stripe;
 
 
@@ -192,6 +192,7 @@ class CartsController extends Controller
             if($order['id']){
                 $ordersArray[$order['id']]['product_id'] = $order['id'];
                 $ordersArray[$order['id']]['product_name'] = $order['name'];
+                $ordersArray[$order['id']]['product_image'] = 'images/image_not_found.jpg';
                 $ordersArray[$order['id']]['product_price'] = $order['price'];
                 $ordersArray[$order['id']]['quantity'] = $order['quantity'];
                 $ordersArray[$order['id']]['total_price'] = $order['total_price'];
@@ -269,6 +270,23 @@ class CartsController extends Controller
                 'amount' => $amount,
                 'currency' => $charge['currency'],
             ]);
+
+
+            $ordersProducts = array();
+
+            foreach($ordersArray as $order){
+                $ordersProducts[] = OrdersProducts::create([
+                    'order_id' => $orderDetails->id,
+                    'product_id' =>  $order['product_id'],
+                    'product_name' =>  $order['product_name'],
+                    'product_image' =>  $order['product_image'],
+                    'product_price' =>  $order['product_price'],
+                    'total_price' =>  $order['total_price'],
+                    'quantity' =>  $order['quantity'],
+                ]);
+               
+            }
+           
 
             if($orderDetails)
             {

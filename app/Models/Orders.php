@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Product;
 
 class Orders extends Model
 {
@@ -21,4 +22,13 @@ class Orders extends Model
         'updated_at',
         'created_at',
       ];
+
+    //   public function orders_products() {
+    //     return $this->hasMany(OrdersProducts::class,'id','product_id');
+    // }
+
+    public function ordersProducts()
+    {
+        return $this->hasMany(OrdersProducts::class,'order_id','id');
+    }
 }
