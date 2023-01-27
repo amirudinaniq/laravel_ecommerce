@@ -28,6 +28,20 @@ class Response implements ArrayAccess
     protected $decoded;
 
     /**
+     * The request cookies.
+     *
+     * @var \GuzzleHttp\Cookie\CookieJar
+     */
+    public $cookies;
+
+    /**
+     * The transfer stats for the request.
+     *
+     * @var \GuzzleHttp\TransferStats|null
+     */
+    public $transferStats;
+
+    /**
      * Create a new response instance.
      *
      * @param  \Psr\Http\Message\MessageInterface  $response
@@ -191,6 +205,16 @@ class Response implements ArrayAccess
     }
 
     /**
+     * Determine if the response was a 404 "Not Found" response.
+     *
+     * @return bool
+     */
+    public function notFound()
+    {
+        return $this->status() === 404;
+    }
+
+    /**
      * Determine if the response indicates a client or server error occurred.
      *
      * @return bool
@@ -315,14 +339,15 @@ class Response implements ArrayAccess
     /**
      * Throw an exception if a server or client error occurred and the given condition evaluates to true.
      *
-     * @param  bool  $condition
+     * @param  \Closure|bool  $condition
+     * @param  \Closure|null  $throwCallback
      * @return $this
      *
      * @throws \Illuminate\Http\Client\RequestException
      */
     public function throwIf($condition)
     {
-        return $condition ? $this->throw() : $this;
+        return value($condition, $this) ? $this->throw(func_get_args()[1] ?? null) : $this;
     }
 
     /**
